@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <!-- // <link rel="stylesheet" href="https://use.fontawesome.com"> -->
+    <script src="https://kit.fontawesome.com/c2e7ed5758.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" >
+    <title>SSP LEARN</title>
+</head>
+<body>
+    <div id="slideout-menu">
+        <ul>
+                <li>
+                    <a href="index.html">HOME</a>
+                </li>
+                <li>
+                    <a href="sorting.html">SORTING</a>
+                </li>
+                <li>
+                    <a href="searching.html">SEARCHING</a>
+                </li>
+                <li>
+                    <a href="visualisation.html">VISUALISATION</a>
+                </li>
+                <li>
+                    <a href="about.html">ABOUT</a>
+                </li>
+            </ul>
+    </div>
+    
+    <nav>
+        <div id="logo-img">
+            <a href="logopage.html">
+                <img src="img1/ssp2.jpg" alt="logo image">
+            </a>
+        </div>
+        <div id="menu-icon">
+            <i class="fas fa-bars"></i>
+        </div>
+            <ul>
+                <li>
+                    <a href="index.html" class="active">HOME</a>
+                </li>
+                <li>
+                    <a href="sorting.html">SORTING</a>
+                </li>
+                <li>
+                    <a href="searching.html">SEARCHING</a>
+                </li>
+                <li>
+                    <a href="visualisation.html">VISUALISATION</a>
+                </li>
+                <li>
+                    <a href="about.html">ABOUT</a>
+                </li>
+
+            </ul>
+    </nav>
+
+    
+    <main>
+        
+        <h2 class="page-heading" style="text-align: center" >INSERTION SORT</h2>
+        <div id="post-container">
+            <section id="blogpost">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="img1/insertionsort.png" alt="algo image" >
+<!--                        style="width: 500px; height: 300px; margin-left: auto ; margin-right: auto ;display: block"-->
+                    </div>
+                    <div class="card-description"><br><br>
+                        <h2 class="headings">INTRODUCTION</h2><br>
+                            <b>Insertion sort</b> is a simple sorting algorithm that works similar to the way you sort playing cards in your hands. The array is virtually split into a sorted and an unsorted part. Values from the unsorted part are picked and placed at the correct position in the sorted part.<br>
+                                <h2 class="headings">ALGORITHM</h2><br>
+                                To sort an array of size n in ascending order:<br>
+                                1: Iterate from arr[1] to arr[n] over the array.<br>
+                                2: Compare the current element (key) to its predecessor.<br>
+                                3: If the key element is smaller than its predecessor, compare it to the elements before. Move the greater elements one position up to make space for the swapped element.<br><br>
+                              <b>Example</b>:<br><br>
+                            <b>12 </b>, 11 , 13 , 5 , 6<br>
+
+                            Let us loop for i = 1 (second element of the array) to 4 (last element of the array)<br>
+
+                            i = 1. Since 11 is smaller than 12, move 12 and insert 11 before 12<br><br>
+                            <b>11, 12</b>, 13 , 5 , 6<br>
+
+                            i = 2. 13 will remain at its position as all elements in A[0..I-1] are smaller than 13<br><br>
+                            <b>11 , 12 , 13 </b>, 5 , 6<br>
+
+                            i = 3. 5 will move to the beginning and all other elements from 11 to 13 will move one <br>position ahead of their current position.<br><br>
+                            <b>5 , 11 , 12 , 13 </b>, 6<br>
+
+                            i = 4. 6 will move to position after 5, and elements from 11 to 13 will move one position <br>ahead of their current position.<br><br>
+                            <b>5 , 6 , 11 , 12 , 13</b><br><br><br>
+                        
+                            <h2 class="headings">CODE</h2><br>
+                            <h4 class="codefont" style="margin-left: 150px">
+                            &emsp;// C++ program for implementation of Insertion sorting<br>
+                                &emsp;#include bits/stdc++.h <br>
+                                &emsp;using namespace std; <br>
+
+                                &emsp;/* Function to sort an array using insertion sort*/<br>
+                                &emsp;void insertionSort(int arr[], int n)  <br>
+                                &emsp;{<br>  
+                                   &emsp;&emsp; &emsp;int i, key, j;  <br>
+                                    &emsp;&emsp;&emsp;for (i = 1; i < n; i++) <br>
+                                    &emsp;&emsp;&emsp;{  <br>
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;key = arr[i];  <br>
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;j = i - 1;  <br>
+
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;/* Move elements of arr[0..i-1], that are  <br>
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;greater than key, to one position ahead  <br>
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;of their current position */<br>
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;while (j >= 0 && arr[j] > key) <br>
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;{  <br>
+                                            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;arr[j + 1] = arr[j];  <br>
+                                            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;j = j - 1;  <br>
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;}  <br>
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;arr[j + 1] = key;  <br>
+                                    &emsp;&emsp;&emsp;}  <br>
+                                &emsp;} <br> 
+
+                                &emsp;// A utility function to print an array of size n  <br>
+                                &emsp;void printArray(int arr[], int n)  <br>
+                                &emsp;{  <br>
+                                   &emsp;&emsp; &emsp;int i;  <br>
+                                    &emsp;&emsp;&emsp;for (i = 0; i < n; i++)<br>  
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;cout << arr[i] << " ";  <br>
+                                    &emsp;&emsp;&emsp;cout << endl; <br>
+                                &emsp;}  <br><br>
+
+                                &emsp;/* Driver code */<br>
+                                &emsp;int main()  <br>
+                                &emsp;{  <br>
+                                  &emsp;&emsp;  &emsp;int arr[] = { 12, 11, 13, 5, 6 };  <br>
+                                    &emsp;&emsp;&emsp;int n = sizeof(arr) / sizeof(arr[0]);  <br>
+                                    &emsp;&emsp;&emsp;<br>
+                                    &emsp;&emsp;&emsp;insertionSort(arr, n); <br> 
+                                    &emsp;&emsp;&emsp;printArray(arr, n);  <br><br>
+
+                    &emsp;                return 0;  <br>
+                                &emsp;}    <br> </h4>
+                        
+                        <h2 class = "headings">OUTPUT</h2><br>
+                        <h4 class="codefont" style="margin-left: 150px;">
+                       &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Sorted array:<br>
+                   &emsp;&emsp;  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;   11 12 22 25 34 64 90</h4><br><br>
+                        
+                        <h2 class="headings">ILUSTRATION</h2><br>
+                        <img src="img1/insertion_sort.png" style="margin-left: 130px ; margin-bottom: 50px;">
+                        
+                    </div>
+                </div>
+                
+<!--
+                <div id="comment-section">
+                    Comments Section
+                </div>
+-->
+            </section>
+            
+            <aside id="sidebar">
+                <h2><u>KEY</u>&nbsp;<u>NOTES</u></h2>
+                <p>
+                <h4>
+                    <br>
+                    <u>TIME COMPLEXITY</u> : O(n*2) <br><br>
+                    <u>AUXILARY SPACE</u> : O(1)<br><br>
+                    <u>ALGORITHMIC PARADIGM</u> : Incremental Approach<br><br>
+                    <u>SORTING IN PLACE</u> : Yes<br><br>
+                    <u>BOUNDARY CASES</u> : Insertion sort takes maximum time to sort if elements are sorted in reverse order. And it takes minimum time (Order of n) when elements are already sorted.<br><br><br><br>
+                </h4>
+                <h3>
+                    <ul style="list-style-type: square">
+                        <li><a href="bubblesort.html" ; style="color: lightpink">BUBBLE SORT</a></li>
+                        <br>
+                        
+                        <li><a href="insertionsort.html"  ; style="color: lightpink">INSERTION SORT</a></li>
+                        <br>
+                        
+                        <li><a href="selectionsort.html"  ; style="color: lightpink">SELECTION SORT</a></li>
+                        <br>
+                        
+                        <li><a href="countingsort.html"  ; style="color: lightpink">COUNTING SORT</a></li>
+                        <br>
+                        
+                        <li><a href="mergesort.html" ; style="color: lightpink">MERGE SORT</a></li>
+                        <br>
+                        
+                        <li><a href="quicksort.html" ; style="color: lightpink">QUICK SORT</a></li>
+                        <br>
+                        
+<!--
+                        <li><a href="visualisation.html" ; style="color: mediumspringgreen">VISUALISATION</a></li>
+                        <br>
+-->
+                        
+                    </ul>
+                </h3>
+                </p>
+            </aside>
+        </div>
+        
+
+        
+
+<!--        ....................................-->     
+        <footer>
+            <div id="left-footer" >
+                <h3>Quick Links</h3>
+                <p>
+                    <ul>
+                        <li>
+                            <a href ="index.html">HOME</a>
+                        </li>
+                        
+                        <li>
+                            <a href ="sorting.html">SORTING</a>
+                        </li>
+                        <li>
+                            <a href ="searching.html">SEARCHING</a>
+                        </li>
+                        <li>
+                            <a href ="visualisation.html">VISUALISATION</a>
+                        </li>
+                        
+                        <li>
+                            <a href ="about.html">ABOUT</a>
+                        </li>
+                        <li>
+                            <a href ="index1.php">CONTACT US</a>
+                        </li>
+                        
+                    </ul>
+                </p>
+            </div>
+        <div id="right-footer">
+            <h3>Follow us on</h3>
+            <div id = "social-media-footer">
+                <ul>
+                    <li>
+                        <a href="https://www.facebook.com/mynotes.here.71">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/channel/UCS7Hy4greFUR1V2dzBbk2hQ">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/my.__.notes/">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        </footer>
+    
+    </main>
+    
+    <script src="main.js"></script>
+</body>
+</html> 

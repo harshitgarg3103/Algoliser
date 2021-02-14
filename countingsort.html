@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <!-- // <link rel="stylesheet" href="https://use.fontawesome.com"> -->
+    <script src="https://kit.fontawesome.com/c2e7ed5758.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" >
+    <title>SSP LEARN</title>
+</head>
+<body>
+    <div id="slideout-menu">
+        <ul>
+                <li>
+                    <a href="index.html">HOME</a>
+                </li>
+                <li>
+                    <a href="sorting.html">SORTING</a>
+                </li>
+                <li>
+                    <a href="searching.html">SEARCHING</a>
+                </li>
+                <li>
+                    <a href="visualisation.html">VISUALISATION</a>
+                </li>
+                <li>
+                    <a href="about.html">ABOUT</a>
+                </li>
+            </ul>
+    </div>
+    
+    <nav>
+        <div id="logo-img">
+            <a href="logopage.html">
+                <img src="img1/ssp2.jpg" alt="logo image">
+            </a>
+        </div>
+        <div id="menu-icon">
+            <i class="fas fa-bars"></i>
+        </div>
+            <ul>
+                <li>
+                    <a href="index.html" class="active">HOME</a>
+                </li>
+                <li>
+                    <a href="sorting.html">SORTING</a>
+                </li>
+                <li>
+                    <a href="searching.html">SEARCHING</a>
+                </li>
+                <li>
+                    <a href="visualisation.html">VISUALISATION</a>
+                </li>
+                <li>
+                    <a href="about.html">ABOUT</a>
+                </li>
+
+            </ul>
+    </nav>
+
+    
+    <main>
+        
+        <h2 class="page-heading" style="text-align: center" >COUNTING SORT</h2>
+        <div id="post-container">
+            <section id="blogpost">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="img1/countingsort.jpg" alt="blog image" >
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <div class="card-description"><br><br>
+                        <h2 class="headings">INTRODUCTION</h2><br>
+                            <b>Counting Sort</b> is a sorting technique based on keys between a specific range. It works by counting the number of objects having distinct key values (kind of hashing). Then doing some arithmetic to calculate the position of each object in the output sequence.<br><br>
+                            <b>Example</b>:<br><br>
+                            For simplicity, consider the data in the range 0 to 9. <br>
+                            <b>Input data : 1, 4, 1, 2, 7, 5, 2</b><br><br>
+                            1) Take a count array to store the count of each unique object.<br>
+                              Index:     0  1  2  3  4  5  6  7  8  9<br>
+                              Count:     0  2  2  0   1  1  0  1  0  0<br><br>
+
+                              2) Modify the count array such that each element at each index
+                              stores the sum of previous counts. <br>
+                              Index:     0  1  2  3  4  5  6  7  8  9<br>
+                              Count:     0  2  4  4  5  6  6  7  7  7<br><br>
+
+                            The modified count array indicates the position of each object in 
+                            the output sequence.<br><br>
+
+                              3) Output each object from the input sequence followed by 
+                              decreasing its count by 1.<br>
+                              Process the input data: 1, 4, 1, 2, 7, 5, 2. Position of 1 is 2.<br>
+                              Put data 1 at index 2 in output. Decrease count by 1 to place <br>
+                              next data 1 at an index 1 smaller than this index.
+                            <br><br><br>
+                        
+                        
+                        
+                        
+                            <h2 class="headings">CODE</h2><br>
+                            <h4 class="codefont" , style="margin-left: 150px;">
+                           &emsp; // C++ program for implementation of Counting sort<br>
+                              &emsp;  #include bits/stdc++.h <br>
+                             &emsp;   using namespace std; <br>
+                              &emsp;  #define RANGE 255<br><br>
+
+                               &emsp; // The main function that sort<br>
+                             &emsp;   // the given string arr[] in <br>
+                              &emsp;  // alphabatical order <br>
+                              &emsp;  void countSort(char arr[])<br><br>
+                              &emsp;  { <br>
+                               &emsp;&emsp;&emsp;     // The output character array<br>
+                               &emsp;&emsp;&emsp;     // that will have sorted arr <br>
+                               &emsp;&emsp;&emsp;     char output[strlen(arr)]; <br><br>
+
+                               &emsp;&emsp;&emsp;     // Create a count array to store count of inidividul <br>
+                                &emsp;&emsp;&emsp;    // characters and initialize count array as 0 <br>
+                                &emsp;&emsp;&emsp;    int count[RANGE + 1], i; <br>
+                                &emsp;&emsp;&emsp;    memset(count, 0, sizeof(count)); <br><br>
+
+                                &emsp;&emsp;&emsp;    // Store count of each character <br>
+                                &emsp;&emsp;&emsp;    for (i = 0; arr[i]; ++i) <br>
+                                 &emsp;&emsp;&emsp;&emsp;&emsp;       ++count[arr[i]]; <br><br>
+
+                                 &emsp;&emsp;&emsp;   // Change count[i] so that count[i] now contains actual <br>
+                                 &emsp;&emsp;&emsp;   // position of this character in output array <br>
+                                 &emsp;&emsp;&emsp;   for (i = 1; i <= RANGE; ++i) <br>
+                                   &emsp;&emsp;&emsp;&emsp;&emsp;     count[i] += count[i - 1]; <br><br>
+
+                                  &emsp;&emsp;&emsp;  // Build the output character array <br>
+                                  &emsp;&emsp;&emsp;  for (i = 0; arr[i]; ++i) { <br>
+                                    &emsp;&emsp;&emsp;&emsp;&emsp;    output[count[arr[i]] - 1] = arr[i]; <br>
+                                    &emsp;&emsp;&emsp;&emsp;&emsp;    --count[arr[i]]; <br>
+                                    &emsp;&emsp;&emsp;} <br><br>
+
+                                   &emsp;&emsp;&emsp; /*  <br>
+                                    &emsp;&emsp;&emsp;For Stable algorithm  <br>
+                                    &emsp;&emsp;&emsp;for (i = sizeof(arr)-1; i>=0; --i)  <br>
+                                    &emsp;&emsp;&emsp;{  <br>
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;output[count[arr[i]]-1] = arr[i];  <br>
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;--count[arr[i]];  <br>
+                                    &emsp;&emsp;&emsp;}  <br><br>
+
+                                    &emsp;&emsp;&emsp;For Logic : See implementation  <br>
+                                    &emsp;&emsp;&emsp;*/<br><br>
+
+                                    &emsp;&emsp;&emsp;// Copy the output array to arr, so that arr now <br>
+                                    &emsp;&emsp;&emsp;// contains sorted characters <br>
+                                    &emsp;&emsp;&emsp;for (i = 0; arr[i]; ++i) <br>
+                                      &emsp;&emsp;&emsp;&emsp;&emsp;  arr[i] = output[i]; <br>
+                                &emsp;} <br><br>
+
+                                &emsp;// Driver  code <br>
+                               &emsp; int main() <br>
+                               &emsp; { <br>
+                                &emsp;&emsp;&emsp;    char arr[] = "geeksforgeeks"; <br><br>
+
+                                  &emsp;&emsp;&emsp;  countSort(arr); <br><br>
+
+                                 &emsp;&emsp;&emsp;   cout << "Sorted character array is " << arr; <br>
+                                 &emsp;&emsp;&emsp;   return 0; <br>
+                                &emsp;}   <br> </h4>
+                        
+                        <h2 class = "headings">OUTPUT</h2><br>
+                        <h4 class="codefont" style="margin-left: 150px" >
+                       &emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Sorted character array is:<br>
+                      &emsp;&emsp;  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;eeeefggkkorss</h4><br><br>
+                        
+                        <h2 class="headings">FLOWCHART</h2><br>
+                        <img src="img1/counting_sort_flowchart.JPG" style="margin-left: 200px ; margin-bottom: 50px;">
+                        
+                    </div>
+                </div>
+                
+<!--
+                <div id="comment-section">
+                    Comments Section
+                </div>
+-->
+            </section>
+            
+            <aside id="sidebar">
+                <h2><u>KEY</u>&nbsp;<u>NOTES</u></h2>
+                <p>
+                <h4>
+                    <br>
+                    <u>Worst Case Time Complexity</u> : O(n+k) <br><br>
+                    <u>Best Case Time Complexity</u> : O(n+k)<br><br>
+                    <u>Average Case Time Complexity</u> : O(n+k)<br><br>
+                    <u>Auxiliary Space [ worst case ]</u> : O(k)
+                    
+                    <br><br><br><br>
+                </h4>
+                <h3>
+                    <ul style="list-style-type: square">
+                        <li><a href="bubblesort.html" ; style="color: lightpink">BUBBLE SORT</a></li>
+                        <br>
+                        
+                        <li><a href="insertionsort.html"  ; style="color: lightpink">INSERTION SORT</a></li>
+                        <br>
+                        
+                        <li><a href="selectionsort.html"  ; style="color: lightpink">SELECTION SORT</a></li>
+                        <br>
+                        
+                        <li><a href="countingsort.html"  ; style="color: lightpink">COUNTING SORT</a></li>
+                        <br>
+                        
+                        <li><a href="mergesort.html" ; style="color: lightpink">MERGE SORT</a></li>
+                        <br>
+                        
+                        <li><a href="quicksort.html" ; style="color: lightpink">QUICK SORT</a></li>
+                        <br>
+                        
+<!--
+                        <li><a href="visualisation.html" ; style="color: lightpink">VISUALISATION</a></li>
+                        <br>
+                        
+-->
+                    </ul>
+                </h3>
+                </p>
+            </aside>
+        </div>
+        
+
+        
+
+<!--        ....................................-->     
+        <footer>
+            <div id="left-footer" >
+                <h3>Quick Links</h3>
+                <p>
+                    <ul>
+                        <li>
+                            <a href ="index.html">HOME</a>
+                        </li>
+                        
+                        <li>
+                            <a href ="sorting.html">SORTING</a>
+                        </li>
+                        <li>
+                            <a href ="searching.html">SEARCHING</a>
+                        </li>
+                        <li>
+                            <a href ="visualisation.html">VISUALISATION</a>
+                        </li>
+                        
+                        <li>
+                            <a href ="about.html">ABOUT</a>
+                        </li>
+                        <li>
+                            <a href ="index1.php">CONTACT US</a>
+                        </li>
+                        
+                    </ul>
+                </p>
+            </div>
+        <div id="right-footer">
+            <h3>Follow us on</h3>
+            <div id = "social-media-footer">
+                <ul>
+                    <li>
+                        <a href="https://www.facebook.com/mynotes.here.71">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/channel/UCS7Hy4greFUR1V2dzBbk2hQ">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/my.__.notes/">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        </footer>
+    
+    </main>
+    
+    <script src="main.js"></script>
+</body>
+</html> 

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <!-- // <link rel="stylesheet" href="https://use.fontawesome.com"> -->
+    <script src="https://kit.fontawesome.com/c2e7ed5758.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" >
+    <title>SSP LEARN</title>
+</head>
+<body>
+    <div id="slideout-menu">
+        <ul>
+                <li>
+                    <a href="index.html">HOME</a>
+                </li>
+                <li>
+                    <a href="sorting.html">SORTING</a>
+                </li>
+                <li>
+                    <a href="searching.html">SEARCHING</a>
+                </li>
+                <li>
+                    <a href="visualisation.html">VISUALISATION</a>
+                </li>
+                <li>
+                    <a href="about.html">ABOUT</a>
+                </li>
+            </ul>
+    </div>
+    
+    <nav>
+        <div id="logo-img">
+            <a href="logopage.html">
+                <img src="img1/ssp2.jpg" alt="logo image">
+            </a>
+        </div>
+        <div id="menu-icon">
+            <i class="fas fa-bars"></i>
+        </div>
+            <ul>
+                <li>
+                    <a href="index.html" class="active">HOME</a>
+                </li>
+                <li>
+                    <a href="sorting.html">SORTING</a>
+                </li>
+                <li>
+                    <a href="searching.html">SEARCHING</a>
+                </li>
+                <li>
+                    <a href="visualisation.html">VISUALISATION</a>
+                </li>
+                <li>
+                    <a href="about.html">ABOUT</a>
+                </li>
+
+            </ul>
+    </nav>
+
+    
+    <main>
+        
+        <h2 class="page-heading" style="text-align: center" >LINEAR SEARCH</h2>
+        <div id="post-container">
+            <section id="blogpost">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="img1/Linear-Search.png" alt="algo image" >
+<!--                        style="width: 500px; height: 300px; margin-left: auto ; margin-right: auto ;display: block"-->
+                    </div>
+                    <div class="card-description"><br><br>
+                        <h2 class="headings">INTRODUCTION</h2><br>
+                            <b>Linear Search</b> or sequential search is a method for finding an element within a list. It sequentially checks each element of the list until a match is found or the whole list has been searched.<br>
+                            <br>
+                        
+                                <h2 class="headings">ALGORITHM</h2><br>
+                                A simple approach is to do a linear search, i.e  <br>
+                                Start from the leftmost element of arr[] and one by one compare x with each element of arr[]<br>
+                                If x matches with an element, return the index.<br>
+                                If x doesn’t match with any of elements, return -1.<br>
+                                 <br><br>
+            
+                              <b><u>Example</u></b>:<br><br><br>
+                            <b>Input</b> : arr[] = {10, 20, 80, 30, 60, 50, <br>
+                                                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 110, 100, 130, 170}<br>
+                                      &emsp;&emsp;&emsp;x = 110;<br>
+                            <b>Output</b> : 6<br>
+                            Element x is present at index 6<br><br><br><br>
+
+                            <b>Input</b> : arr[] = {10, 20, 80, 30, 60, 50,<br> 
+                                                 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;110, 100, 130, 170}<br>
+                                       &emsp;&emsp;&emsp;x = 175;<br>
+                            <b>Output</b> : -1<br>
+                            Element x is not present in arr[].<br><br><br>
+                        
+                        
+                        
+                        
+                        
+                            <h2 class="headings">CODE</h2><br>
+                            <h4 class="codefont" style="margin-left: 150px">
+                            &emsp;// C++ program for implementation of Linear Searching<br>
+                                &emsp;#include bits/stdc++.h <br>
+                                &emsp;using namespace std; <br><br>
+
+                                &emsp;int search(int arr[], int n, int x)<br>
+                                &emsp;{<br>
+                                    &emsp;&emsp;&emsp;int i;<br>
+                                    &emsp;&emsp;&emsp;for (i = 0; i < n; i++)<br>
+                                        &emsp;&emsp;&emsp;if (arr[i] == x)<br>
+                                            &emsp;&emsp;&emsp;&emsp;&emsp;return i;<br>
+                                    &emsp;&emsp;&emsp;return -1;<br>
+                                &emsp;}<br><br>
+
+                                &emsp;// Driver code<br>
+                                &emsp;int main(void)<br>
+                                &emsp;{<br>
+                                    &emsp;&emsp;&emsp;int arr[] = { 2, 3, 4, 10, 40 };<br>
+                                    &emsp;&emsp;&emsp;int x = 10;<br>
+                                    &emsp;&emsp;&emsp;int n = sizeof(arr) / sizeof(arr[0]);<br><br>
+
+                                    &emsp;&emsp;&emsp;// Function call<br>
+                                    &emsp;&emsp;&emsp;int result = search(arr, n, x);<br>
+                                    &emsp;&emsp;&emsp;(result == -1)<br>
+                                        &emsp;&emsp;&emsp;? cout << "Element is not present in array"<br>
+                                        &emsp;&emsp;&emsp;: cout << "Element is present at index " << result;<br>
+                                    &emsp;&emsp;&emsp;return 0;<br>
+                                &emsp;}    <br> </h4>
+                        
+                        <h2 class = "headings">OUTPUT</h2><br>
+                        <h4 class="codefont" style="margin-left: 150px;">
+                       &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Element is present at index 3</h4><br><br>
+                        
+                        <h2 class="headings">FLOWCHART</h2><br>
+                        <img src="img1/LINEAR_ILUS.png" style="margin-left: 130px ; margin-bottom: 50px;">
+                        
+                    </div>
+                </div>
+                
+<!--
+                <div id="comment-section">
+                    Comments Section
+                </div>
+-->
+            </section>
+            
+            <aside id="sidebar">
+                <h2><u>KEY</u>&nbsp;<u>NOTES</u></h2>
+                <p>
+                <h4>
+                    <br>
+                    <u>BEST CASE</u> : In the best possible case, <br>
+                    <ul>
+                        <li>The element being searched may be found at the first position.</li>
+                        <li>In this case, the search terminates in success with just one comparison</li>
+                        <li>Thus in best case, linear search algorithm takes O(1) operations.</li>
+                    </ul>
+                    <u>AUXILARY SPACE</u> : O(1)<br><br>
+                    <u>ALGORITHMIC PARADIGM</u> : Incremental Approach<br><br>
+                    <u>SORTING IN PLACE</u> : Yes<br><br>
+                    <u>BOUNDARY CASES</u> : Insertion sort takes maximum time to sort if elements are sorted in reverse order. And it takes minimum time (Order of n) when elements are already sorted.<br><br><br><br>
+                </h4>
+                <h3>
+                    <ul style="list-style-type: square">
+                        <li><a href="linearsearch.html"  ; style="color: lightpink">LINEAR SEARCH</a></li>
+                        <br>
+                        
+                        <li><a href="binarysearch.html"  ; style="color: lightpink">BINARY SEARCH</a></li>
+                        <br>
+                        
+                        <li><a href="comingsoonpage.html"  ; style="color: lightpink">JUMP SEARCH</a></li>
+                        <br>
+                        
+                        <li><a href="comingsoonpage.html"  ; style="color: lightpink">INTERPOLATION SEARCH</a></li>
+                        <br>
+                        
+                        <li><a href="comingsoonpage.html" ; style="color: lightpink">EXPONENTIAL SEARCH</a></li>
+                        <br>
+                        
+                        <li><a href="comingsoonpage.html" ; style="color: lightpink">FIBONACCI SEARCH</a></li>
+                        <br>                        
+ 
+                    </ul>
+                </h3>
+                </p>
+            </aside>
+        </div>
+        
+
+        
+
+<!--        ....................................-->     
+        <footer>
+            <div id="left-footer" >
+                <h3>Quick Links</h3>
+                <p>
+                    <ul>
+                        <li>
+                            <a href ="index.html">HOME</a>
+                        </li>
+                        
+                        <li>
+                            <a href ="sorting.html">SORTING</a>
+                        </li>
+                        <li>
+                            <a href ="searching.html">SEARCHING</a>
+                        </li>
+                        <li>
+                            <a href ="visualisation.html">VISUALISATION</a>
+                        </li>
+                        
+                        <li>
+                            <a href ="about.html">ABOUT</a>
+                        </li>
+                        <li>
+                            <a href ="index1.php">CONTACT US</a>
+                        </li>
+                        
+                    </ul>
+                </p>
+            </div>
+        <div id="right-footer">
+            <h3>Follow us on</h3>
+            <div id = "social-media-footer">
+                <ul>
+                    <li>
+                        <a href="https://www.facebook.com/mynotes.here.71">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/channel/UCS7Hy4greFUR1V2dzBbk2hQ">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/my.__.notes/">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        </footer>
+    
+    </main>
+    
+    <script src="main.js"></script>
+</body>
+</html> 

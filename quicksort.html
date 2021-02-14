@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <!-- // <link rel="stylesheet" href="https://use.fontawesome.com"> -->
+    <script src="https://kit.fontawesome.com/c2e7ed5758.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" >
+    <title>SSP LEARN</title>
+</head>
+<body>
+    <div id="slideout-menu">
+        <ul>
+                <li>
+                    <a href="index.html">HOME</a>
+                </li>
+                <li>
+                    <a href="sorting.html">SORTING</a>
+                </li>
+                <li>
+                    <a href="searching.html">SEARCHING</a>
+                </li>
+                <li>
+                    <a href="visualisation.html">VISUALISATION</a>
+                </li>
+                <li>
+                    <a href="about.html">ABOUT</a>
+                </li>
+            </ul>
+    </div>
+    
+    <nav>
+        <div id="logo-img">
+            <a href="logopage.html">
+                <img src="img1/ssp2.jpg" alt="logo image">
+            </a>
+        </div>
+        <div id="menu-icon">
+            <i class="fas fa-bars"></i>
+        </div>
+            <ul>
+                <li>
+                    <a href="index.html" class="active">HOME</a>
+                </li>
+                <li>
+                    <a href="sorting.html">SORTING</a>
+                </li>
+                <li>
+                    <a href="searching.html">SEARCHING</a>
+                </li>
+                <li>
+                    <a href="visualisation.html">VISUALISATION</a>
+                </li>
+                <li>
+                    <a href="about.html">ABOUT</a>
+                </li>
+
+            </ul>
+    </nav>
+
+    
+    <main>
+        
+        <h2 class="page-heading" style="text-align: center" >QUICK SORT</h2>
+        <div id="post-container">
+            <section id="blogpost">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="img1/quicksort_img.png" alt="blog image" >
+<!--                        style="width: 500px; height: 300px; margin-left: auto ; margin-right: auto ;display: block"-->
+                    </div>
+                    <div class="card-description"><br><br>
+                        <h2 class="headings">INTRODUCTION</h2><br>
+                            Like QuickSort, Merge Sort is a Divide and Conquer algorithm. It divides the input array into two halves, calls itself for the two halves, and then merges the two sorted halves. The merge() function is used for merging two halves. The merge(arr, l, m, r) is a key process that assumes that arr[l..m] and arr[m+1..r] are sorted and merges the two sorted sub-arrays into one.<br><br>
+                        
+                        <h2 class="headings">ALGORITHM</h2>
+                        
+                        1 : Always pick first element as pivot.<br><br>
+                        2 : Always pick last element as pivot (implemented below)<br><br>
+                        3 : Pick a random element as pivot.<br><br>
+                        4 : Pick median as pivot.<br><br>
+                        The key process in quickSort is partition(). Target of partitions is, given an array and an element x of array as pivot, put x at its correct position in sorted array and put all smaller elements (smaller than x) before x, and put all greater elements (greater than x) after x. All this should be done in linear time.<br><br><br>
+                        
+                        
+                        
+                        
+                        
+                    
+                        
+                            <h2 class="headings">CODE</h2><br><br>
+                            <h4 class="codefont" , style="margin-left: 150px;">
+                            &emsp;// C++ program for implementation of Quick sorting<br>
+                                &emsp;#include bits/stdc++.h <br>
+                                &emsp;using namespace std; <br><br>
+
+                                &emsp;// A utility function to swap two elements  <br>
+                                &emsp;void swap(int* a, int* b)  <br>
+                                &emsp;{  <br>
+                                    &emsp;&emsp;&emsp;int t = *a;  <br>
+                                    &emsp;&emsp;&emsp;*a = *b;  <br>
+                                    &emsp;&emsp;&emsp;*b = t;  <br>
+                                &emsp;}  <br><br>
+
+                                &emsp;/* This function takes last element as pivot, places  
+                                the pivot element at its correct position in sorted  
+                                array, and places all smaller (smaller than pivot)  
+                                to left of pivot and all greater elements to right  
+                                of pivot */<br><br>
+                                &emsp;int partition (int arr[], int low, int high) <br> 
+                                &emsp;{  <br>
+                                    &emsp;&emsp;&emsp;int pivot = arr[high]; // pivot  <br>
+                                    &emsp;&emsp;int i = (low - 1); // Index of smaller element <br><br> 
+
+                                    &emsp;&emsp;&emsp;for (int j = low; j <= high - 1; j++)  <br>
+                                    &emsp;&emsp;&emsp;{  <br>
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;// If current element is smaller than the pivot  <br>
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;if (arr[j] < pivot)  <br>
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;{  <br>
+                                           &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; i++; // increment index of smaller element <br> 
+                                            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;swap(&arr[i], &arr[j]);  <br>
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;}  <br>
+                                    &emsp;&emsp;&emsp;}  <br>
+                                    &emsp;&emsp;&emsp;swap(&arr[i + 1], &arr[high]);  <br>
+                                    &emsp;&emsp;&emsp;return (i + 1);  <br>
+                                &emsp;}  <br><br>
+
+                                &emsp;/* The main function that implements QuickSort <br> 
+                                &emsp;arr[] --> Array to be sorted,  <br>
+                                &emsp;low --> Starting index,  <br>
+                                &emsp;high --> Ending index */<br><br>
+                                &emsp;void quickSort(int arr[], int low, int high)  <br>
+                                &emsp;{  <br>
+                                    &emsp;&emsp;&emsp;if (low < high)  <br>
+                                    &emsp;&emsp;&emsp;{  <br>
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;/* pi is partitioning index, arr[p] is now  <br>
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;at right place */<br>
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;int pi = partition(arr, low, high);  <br><br>
+
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;// Separately sort elements before  <br>
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;// partition and after partition  <br>
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;quickSort(arr, low, pi - 1);  <br>
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;quickSort(arr, pi + 1, high);  <br>
+                                    &emsp;&emsp;&emsp;}  <br>
+                                &emsp;}  <br><br>
+
+                                &emsp;/* Function to print an array */<br>
+                                &emsp;void printArray(int arr[], int size)  <br>
+                                &emsp;{  <br>
+                                    &emsp;&emsp;&emsp;int i;  <br>
+                                    &emsp;&emsp;&emsp;for (i = 0; i < size; i++)  <br>
+                                       &emsp;&emsp;&emsp;&emsp;&emsp; cout << arr[i] << " ";  <br>
+                                    &emsp;&emsp;&emsp;cout << endl;  <br>
+                                &emsp;}  <br><br>
+
+                                &emsp;// Driver Code <br>
+                                &emsp;int main()  <br>
+                                &emsp;{  <br>
+                                   &emsp;&emsp;&emsp; int arr[] = {10, 7, 8, 9, 1, 5};  <br>
+                                   &emsp;&emsp;&emsp; int n = sizeof(arr) / sizeof(arr[0]); <br> 
+                                   &emsp;&emsp;&emsp; quickSort(arr, 0, n - 1);  <br>
+                                   &emsp;&emsp;&emsp; cout << "Sorted array: \n";  <br>
+                                   &emsp;&emsp;&emsp; printArray(arr, n);  <br>
+                                   &emsp;&emsp;&emsp; return 0;  <br>
+                                &emsp;}  <br><br></h4>
+                                
+                                <h2 class="headings">OUTPUT</h2><br>
+                                <h4 class="codefont" , style="margin-left: 150px;">
+                        
+                               &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Sorted array:<br>
+                                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;1 5 7 8 9 10<br></h4><br>
+                        
+                        
+                        <h2 class="headings">FLOWCHART</h2><br>
+                        <img src="img1/quicksort_flowchart.JPG" style="margin-left: 150px ; margin-bottom: 50px;margin-top: 50px">
+                        
+                        
+                    </div>
+                </div>
+                
+<!--
+                <div id="comment-section">
+                    Comments Section
+                </div>
+-->
+            </section>
+            
+            <aside id="sidebar">
+                <h2><u>KEY</u>&nbsp;<u>NOTES</u></h2>
+                <p>
+                <h4>
+                    <br>
+                    <u>TIME COMPLEXITY</u> : T(n) = T(k) + T(n-k-1) + \theta(n) <br><br>
+                    <u>BEST CASE</u> :  T(n) = T(n-1) + \theta(n)<br><br>
+                    <u>WORST CASE</u> :  T(n) = 2T(n/2) + \theta(n) <br><br>
+                    <u>AVERAGE CASE</u> :   T(n) = T(n/9) + T(9n/10) + \theta(n)
+<br><br><br><br>
+                </h4>
+                <h3>
+                    <ul style="list-style-type: square">
+                        <li><a href="bubblesort.html" ; style="color: lightpink">BUBBLE SORT</a></li>
+                        <br>
+                        
+                        <li><a href="insertionsort.html"  ; style="color: lightpink">INSERTION SORT</a></li>
+                        <br>
+                        
+                        <li><a href="selectionsort.html"  ; style="color: lightpink">SELECTION SORT</a></li>
+                        <br>
+                        
+                        <li><a href="countingsort.html"  ; style="color: lightpink">COUNTING SORT</a></li>
+                        <br>
+                        
+                        <li><a href="mergesort.html" ; style="color: lightpink">MERGE SORT</a></li>
+                        <br>
+                        
+                        <li><a href="quicksort.html" ; style="color: lightpink">QUICK SORT</a></li>
+                        <br>
+                        
+<!--
+                        <li><a href="visualisation.html" ; style="color: lightpink">VISUALISATION</a></li>
+                        <br>
+                        
+-->
+                    </ul>
+                </h3>
+                </p>
+            </aside>
+        </div>
+        
+
+        
+
+<!--        ....................................-->     
+        <footer>
+            <div id="left-footer" >
+                <h3>Quick Links</h3>
+                <p>
+                    <ul>
+                        <li>
+                            <a href ="index.html">HOME</a>
+                        </li>
+                        
+                        <li>
+                            <a href ="sorting.html">SORTING</a>
+                        </li>
+                        <li>
+                            <a href ="searching.html">SEARCHING</a>
+                        </li>
+                        <li>
+                            <a href ="visualisation.html">VISUALISATION</a>
+                        </li>
+                        
+                        <li>
+                            <a href ="about.html">ABOUT</a>
+                        </li>
+                        <li>
+                            <a href ="index1.php">CONTACT US</a>
+                        </li>
+                        
+                    </ul>
+                </p>
+            </div>
+        <div id="right-footer">
+            <h3>Follow us on</h3>
+            <div id = "social-media-footer">
+                <ul>
+                    <li>
+                        <a href="https://www.facebook.com/mynotes.here.71">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/channel/UCS7Hy4greFUR1V2dzBbk2hQ">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/my.__.notes/">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        </footer>
+    
+    </main>
+    
+    <script src="main.js"></script>
+</body>
+</html> 

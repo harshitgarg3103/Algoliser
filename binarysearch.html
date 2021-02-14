@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <!-- // <link rel="stylesheet" href="https://use.fontawesome.com"> -->
+    <script src="https://kit.fontawesome.com/c2e7ed5758.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" >
+    <title>SSP LEARN</title>
+</head>
+<body>
+    <div id="slideout-menu">
+        <ul>
+                <li>
+                    <a href="index.html">HOME</a>
+                </li>
+                <li>
+                    <a href="sorting.html">SORTING</a>
+                </li>
+                <li>
+                    <a href="searching.html">SEARCHING</a>
+                </li>
+                <li>
+                    <a href="visualisation.html">VISUALISATION</a>
+                </li>
+                <li>
+                    <a href="about.html">ABOUT</a>
+                </li>
+            </ul>
+    </div>
+    
+    <nav>
+        <div id="logo-img">
+            <a href="logopage.html">
+                <img src="img1/ssp2.jpg" alt="logo image">
+            </a>
+        </div>
+        <div id="menu-icon">
+            <i class="fas fa-bars"></i>
+        </div>
+            <ul>
+                <li>
+                    <a href="index.html" class="active">HOME</a>
+                </li>
+                <li>
+                    <a href="sorting.html">SORTING</a>
+                </li>
+                <li>
+                    <a href="searching.html">SEARCHING</a>
+                </li>
+                <li>
+                    <a href="visualisation.html">VISUALISATION</a>
+                </li>
+                <li>
+                    <a href="about.html">ABOUT</a>
+                </li>
+
+            </ul>
+    </nav>
+
+    
+    <main>
+        
+        <h2 class="page-heading" style="text-align: center" >BINARY SEARCH</h2>
+        <div id="post-container">
+            <section id="blogpost">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="img1/binarysearch.png" alt="algo image" >
+<!--                        style="width: 500px; height: 300px; margin-left: auto ; margin-right: auto ;display: block"-->
+                    </div>
+                    <div class="card-description"><br><br>
+                        <h2 class="headings">INTRODUCTION</h2><br>
+                            <b>Binary Search</b> is an efficient algorithm for finding an item from a sorted list of items. It works by repeatedly dividing in half the portion of the list that could contain the item, until you've narrowed down the possible locations to just one.<br>
+                            <br>
+                        
+                                <h2 class="headings">ALGORITHM</h2><br>
+                                We basically ignore half of the elements just after one comparison.<br><br>
+
+                                Compare x with the middle element.<br>
+                                If x matches with middle element, we return the mid index.<br>
+                                Else If x is greater than the mid element, then x can only lie in right half subarray after the mid element. So we recur for right half.<br>
+                                Else (x is smaller) recur for the left half.<br>
+                                 <br><br>
+            
+                        
+                            <h2 class="headings">CODE</h2><br>
+                            <h4 class="codefont" style="margin-left: 150px">
+                            &emsp;// C++ program for implementation of Binary Searching<br>
+                                &emsp;#include bits/stdc++.h <br>
+                                &emsp;using namespace std; <br><br>
+
+                                &emsp;// A iterative binary search function. It returns <br>
+                                &emsp;// location of x in given array arr[l..r] if present,<br> 
+                                &emsp;// otherwise -1 <br>
+                                &emsp;int binarySearch(int arr[], int l, int r, int x) <br>
+                                &emsp;{ <br>
+                                    &emsp;&emsp;&emsp;while (l <= r) { <br>
+                                        &emsp;&emsp;&emsp;int m = l + (r - l) / 2;<br><br> 
+
+                                        &emsp;&emsp;&emsp;// Check if x is present at mid <br>
+                                        &emsp;&emsp;&emsp;if (arr[m] == x) <br>
+                                            &emsp;&emsp;&emsp;&emsp;&emsp;return m; <br><br>
+
+                                        &emsp;&emsp;&emsp;// If x greater, ignore left half<br> 
+                                        &emsp;&emsp;&emsp;if (arr[m] < x) <br>
+                                            &emsp;&emsp;&emsp;&emsp;&emsp;l = m + 1; <br><br>
+
+                                        &emsp;&emsp;&emsp;// If x is smaller, ignore right half <br>
+                                        &emsp;&emsp;&emsp;else<br>
+                                            &emsp;&emsp;&emsp;&emsp;&emsp;r = m - 1; <br>
+                                    &emsp;&emsp;&emsp;} <br><br>
+
+                                    &emsp;&emsp;&emsp;// if we reach here, then element was <br>
+                                    &emsp;&emsp;&emsp;// not present <br>
+                                    &emsp;&emsp;&emsp;return -1; <br>
+                                &emsp;} <br><br>
+
+                                &emsp;int main(void) <br>
+                                &emsp;{ <br>
+                                    &emsp;&emsp;&emsp;int arr[] = { 2, 3, 4, 10, 40 }; <br>
+                                    &emsp;&emsp;&emsp;int x = 10; <br>
+                                    &emsp;&emsp;&emsp;int n = sizeof(arr) / sizeof(arr[0]); <br>
+                                    &emsp;&emsp;&emsp;int result = binarySearch(arr, 0, n - 1, x);<br> 
+                                    &emsp;&emsp;&emsp;(result == -1) ? cout << "Element is not present in array" <br>
+                                                   &emsp;&emsp;&emsp;: cout << "Element is present at index " << result;<br> 
+                                    &emsp;&emsp;&emsp;return 0; <br>
+                                &emsp;}     <br> </h4><br><br>
+                        
+                        <h2 class = "headings">OUTPUT</h2><br>
+                        <h4 class="codefont" style="margin-left: 150px;">
+                       &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Element is present at index 3</h4><br><br>
+                        
+                        <h2 class="headings">FLOWCHART</h2><br>
+                        <img src="img1/BINARY_ILUS.JPG" style="margin-left: 130px ; margin-bottom: 50px;">
+                        
+                    </div>
+                </div>
+                
+<!--
+                <div id="comment-section">
+                    Comments Section
+                </div>
+-->
+            </section>
+            
+            <aside id="sidebar">
+                <h2><u>KEY</u>&nbsp;<u>NOTES</u></h2>
+                <p>
+                <h4>
+                    <br>
+                    <u>COMPLEXITY</u> : <br><br>
+                    <ul>
+                        <li><u>WORST CASE</u> : O(log n)</li><br>
+                        <li><u>BEST CASE</u> : O(1)</li><br>
+                        <li><u>AVERAGE CASE</u> : O(log n)</li><br>
+                        <li><u>Worst case space complexity</u> : O(1)</li><br>
+                    </ul>
+                    <u>AUXILARY SPACE</u> : O(1)<br><br>
+                    <br><br><br><br>
+                </h4>
+                <h3>
+                    <ul style="list-style-type: square">
+                        <li><a href="linearsearch.html"  ; style="color: lightpink">LINEAR SEARCH</a></li>
+                        <br>
+                        
+                        <li><a href="binarysearch.html"  ; style="color: lightpink">BINARY SEARCH</a></li>
+                        <br>
+                        
+                        <li><a href="comingsoonpage.html"  ; style="color: lightpink">JUMP SEARCH</a></li>
+                        <br>
+                        
+                        <li><a href="comingsoonpage.html"  ; style="color: lightpink">INTERPOLATION SEARCH</a></li>
+                        <br>
+                        
+                        <li><a href="comingsoonpage.html" ; style="color: lightpink">EXPONENTIAL SEARCH</a></li>
+                        <br>
+                        
+                        <li><a href="comingsoonpage.html" ; style="color: lightpink">FIBONACCI SEARCH</a></li>
+                        <br>                        
+ 
+                    </ul>
+                </h3>
+                </p>
+            </aside>
+        </div>
+        
+
+        
+
+<!--        ....................................-->     
+        <footer>
+            <div id="left-footer" >
+                <h3>Quick Links</h3>
+                <p>
+                    <ul>
+                        <li>
+                            <a href ="index.html">HOME</a>
+                        </li>
+                        
+                        <li>
+                            <a href ="sorting.html">SORTING</a>
+                        </li>
+                        <li>
+                            <a href ="searching.html">SEARCHING</a>
+                        </li>
+                        <li>
+                            <a href ="visualisation.html">VISUALISATION</a>
+                        </li>
+                        
+                        <li>
+                            <a href ="about.html">ABOUT</a>
+                        </li>
+                        <li>
+                            <a href ="index1.php">CONTACT US</a>
+                        </li>
+                        
+                    </ul>
+                </p>
+            </div>
+        <div id="right-footer">
+            <h3>Follow us on</h3>
+            <div id = "social-media-footer">
+                <ul>
+                    <li>
+                        <a href="https://www.facebook.com/mynotes.here.71">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/channel/UCS7Hy4greFUR1V2dzBbk2hQ">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/my.__.notes/">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        </footer>
+    
+    </main>
+    
+    <script src="main.js"></script>
+</body>
+</html> 

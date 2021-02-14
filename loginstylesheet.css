@@ -1,0 +1,100 @@
+.form1
+{
+    background-image: url('img/front7.jpg');
+    color: cyan ;
+    align-content: center;
+    margin-left: 340px;
+    align-self: center;
+    align-content: center;
+    width:400px;
+    max-height:170%;
+    margin: 2 rem auto;
+    border: 2px solid #dc6060;
+    padding: 2rem;
+    border-radius: 20px;
+}
+
+.image{
+    margin-left: 340px;   
+}
+
+.form2
+{
+    margin-left: 530px;
+}
+
+.form3{
+    background-image: url('img/front7.jpg');
+    align-content: center;
+    margin-left: 340px;
+    align-self: center;
+    align-content: center;
+    width:400px;
+    max-height:170%;
+    margin: 2 rem auto;
+    border: 2px solid #dc6060;
+    padding: 2rem;
+    border-radius: 20px;
+}
+
+.abcd{
+    margin-left: 82px;
+}
+
+.owl{
+    margin-left: 178px ;
+    height: 30px;
+    background-color: rgba(29, 161, 100, 0.918);
+}
+
+input{
+    width: 250px;
+    height: 40px;
+}
+
+
+h2{
+    margin-left: 520px;
+}
+
+h1{
+    margin-left: 510px;
+}
+
+h3{
+    margin-left: 461px;
+}
+h4{
+    margin-left: 480px;
+    color: aqua;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+/*    text-align: center;*/
+    /* background: linear-gradient(rgba(0, 0 , 50 , 0.5),rgba(0,0,50,0.5)),url(img/front.jfif); */
+    background-image: url('img/front.jfif');
+    /* width: 80% ; */
+/*    filter: blur(8px);*/
+/*  -webkit-filter: blur(8px);*/
+
+  /* Full height */
+  height: 130%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.xyz{
+    margin-left: 84px;
+}
+
+.cat{
+    margin-left: 178px ;
+    height: 30px;
+    background-color: rgba(29, 161, 100, 0.918);
+}
+

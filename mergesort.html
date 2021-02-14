@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <!-- // <link rel="stylesheet" href="https://use.fontawesome.com"> -->
+    <script src="https://kit.fontawesome.com/c2e7ed5758.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" >
+    <title>SSP LEARN</title>
+</head>
+<body>
+    <div id="slideout-menu">
+        <ul>
+                <li>
+                    <a href="index.html">HOME</a>
+                </li>
+                <li>
+                    <a href="sorting.html">SORTING</a>
+                </li>
+                <li>
+                    <a href="searching.html">SEARCHING</a>
+                </li>
+                <li>
+                    <a href="visualisation.html">VISUALISATION</a>
+                </li>
+                <li>
+                    <a href="about.html">ABOUT</a>
+                </li>
+            </ul>
+    </div>
+    
+    <nav>
+        <div id="logo-img">
+            <a href="logopage.html">
+                <img src="img1/ssp2.jpg" alt="logo image">
+            </a>
+        </div>
+        <div id="menu-icon">
+            <i class="fas fa-bars"></i>
+        </div>
+            <ul>
+                <li>
+                    <a href="index.html" class="active">HOME</a>
+                </li>
+                <li>
+                    <a href="sorting.html">SORTING</a>
+                </li>
+                <li>
+                    <a href="searching.html">SEARCHING</a>
+                </li>
+                <li>
+                    <a href="visualisation.html">VISUALISATION</a>
+                </li>
+                <li>
+                    <a href="about.html">ABOUT</a>
+                </li>
+
+            </ul>
+    </nav>
+
+    
+    <main>
+        
+        <h2 class="page-heading" style="text-align: center" >MERGE SORT</h2>
+        <div id="post-container">
+            <section id="blogpost">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="img1/mergesort.png" alt="blog image" >
+<!--                        style="width: 500px; height: 300px; margin-left: auto ; margin-right: auto ;display: block"-->
+                    </div>
+                    <div class="card-description"><br><br>
+                        <h2 class="headings">INTRODUCTION</h2><br>
+                            Like QuickSort, Merge Sort is a Divide and Conquer algorithm. It divides the input array into two halves, calls itself for the two halves, and then merges the two sorted halves. The merge() function is used for merging two halves. The merge(arr, l, m, r) is a key process that assumes that arr[l..m] and arr[m+1..r] are sorted and merges the two sorted sub-arrays into one.<br><br>
+                        
+                        <h2 class="headings">ALGORITHM</h2>
+                        
+                        <b>MergeSort(arr[], l,  r)</b><br>
+                                If r > l<br>
+                                 1. Find the middle point to divide the array into two halves:  <br>
+                                         &emsp;&emsp;middle m = (l+r)/2<br><br>
+                                 2. Call mergeSort for first half:<br>   
+                                         &emsp;&emsp;Call mergeSort(arr, l, m)<br><br>
+                                 3. Call mergeSort for second half:<br>
+                                         &emsp;&emsp;Call mergeSort(arr, m+1, r)<br><br>
+                                 4. Merge the two halves sorted in step 2 and 3:<br>
+                                         &emsp;&emsp;Call merge(arr, l, m, r)<br><br><br>
+                        
+                        <h2 class="headings">ILUSTRATION</h2><br>
+                        
+                        <b>EXAMPLE :</b><br><br>
+                        The following diagram shows the complete merge sort process for an example array {38, 27, 43, 3, 9, 82, 10}. If we take a closer look at the diagram, we can see that the array is recursively divided in two halves till the size becomes 1. Once the size becomes 1, the merge processes come into action and start merging arrays back till the complete array is merged.
+                        
+                        <img src="img1/mergesort_ilus.png" style="margin-left: 100px ; margin-bottom: 50px;margin-top: 50px">
+                        
+                    
+                        
+                            <h2 class="headings">CODE</h2><br><br>
+                            <h4 class="codefont" , style="margin-left: 150px;">
+                            &emsp;// C++ program for implementation of Bubble sorting<br>
+                                &emsp;#include bits/stdc++.h <br>
+                                &emsp;using namespace std; <br>
+
+                                &emsp;// Merges two subarrays of arr[]. <br>
+                                &emsp;// First subarray is arr[l..m]<br>
+                                &emsp;// Second subarray is arr[m+1..r]<br><br>
+                                &emsp;void merge(int arr[], int l, int m, int r)<br>
+                                &emsp;{<br>
+                                    &emsp;&emsp;&emsp;int n1 = m - l + 1;<br>
+                                    &emsp;&emsp;&emsp;int n2 = r - m;<br><br>
+
+                                    &emsp;&emsp;&emsp;// Create temp arrays<br>
+                                    &emsp;&emsp;&emsp;int L[n1], R[n2];<br><br>
+
+                                    &emsp;&emsp;&emsp;// Copy data to temp arrays L[] and R[]<br>
+                                    &emsp;&emsp;&emsp;for (int i = 0; i < n1; i++)<br>
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;L[i] = arr[l + i];<br>
+                                    &emsp;&emsp;&emsp;for (int j = 0; j < n2; j++)<br>
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;R[j] = arr[m + 1 + j];<br>
+                                    &emsp;<br>
+                                    &emsp;&emsp;&emsp;// Merge the temp arrays back into arr[l..r]<br><br>
+
+                                    &emsp;&emsp;&emsp;// Initial index of first subarray<br>
+                                    &emsp;&emsp;&emsp;int i = 0;<br><br>
+
+                                    &emsp;&emsp;&emsp;// Initial index of second subarray<br>
+                                    &emsp;&emsp;&emsp;int j = 0;<br><br>
+                                
+                                    &emsp;&emsp;&emsp;// Initial index of merged subarray<br>
+                                    &emsp;&emsp;&emsp;int k = l;<br><br>
+
+                                &emsp;&emsp;&emsp;    while (i < n1 && j < n2)<br> 
+                                &emsp;&emsp;&emsp;{<br>
+                                &emsp;&emsp;&emsp;&emsp;&emsp;        if (L[i] <= R[j])<br> 
+                                &emsp;&emsp;&emsp;&emsp;&emsp;{<br>
+                                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;            arr[k] = L[i];<br>
+                                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;            i++;<br>
+                                &emsp;&emsp;&emsp;&emsp;&emsp;        }<br>
+                                &emsp;&emsp;&emsp;&emsp;&emsp;        else {<br>
+                                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;            arr[k] = R[j];<br>
+                                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;            j++;<br>
+                                &emsp;&emsp;&emsp;&emsp;&emsp;        }<br>
+                                &emsp;&emsp;&emsp;&emsp;&emsp;        k++;<br>
+                                &emsp;&emsp;&emsp;    }<br><br>
+
+                                &emsp;&emsp;&emsp;    // Copy the remaining elements of<br>
+                                &emsp;&emsp;&emsp;    // L[], if there are any<br>
+                                &emsp;&emsp;&emsp;    while (i < n1) <br>
+                                &emsp;&emsp;&emsp;{<br>
+                                &emsp;&emsp;&emsp;&emsp;&emsp;        arr[k] = L[i];<br>
+                                &emsp;&emsp;&emsp;&emsp;&emsp;        i++;<br>
+                                &emsp;&emsp;&emsp;&emsp;&emsp;        k++;<br>
+                                &emsp;&emsp;&emsp;    }<br><br>
+
+                                &emsp;&emsp;&emsp;    // Copy the remaining elements of<br>
+                                &emsp;&emsp;&emsp;  // R[], if there are any<br>
+                                &emsp;&emsp;&emsp;  while (j < n2) <br>
+                                &emsp;&emsp;&emsp;  {<br>
+                                &emsp;&emsp;&emsp;&emsp;&emsp;        arr[k] = R[j];<br>
+                                &emsp;&emsp;&emsp;&emsp;&emsp;        j++;<br>
+                                &emsp;&emsp;&emsp;&emsp;&emsp;        k++;<br>
+                                &emsp;&emsp;&emsp;    }<br>
+                                &emsp;}<br><br>
+
+                                &emsp;// l is for left index and r is<br>
+                                &emsp;// right index of the sub-array<br>
+                                &emsp;// of arr to be sorted */<br>
+                                &emsp;void mergeSort(int arr[],int l,int r)<br>
+                                &emsp;{<br>
+                                &emsp;&emsp;&emsp;    if(l>=r)<br>
+                                &emsp;&emsp;&emsp;{<br>
+                                &emsp;&emsp;&emsp;&emsp;&emsp;        return;//returns recursively<br>
+                                &emsp;&emsp;&emsp;    }<br>
+                                &emsp;    int m = (l+r-1)/2;<br>
+                                &emsp;    mergeSort(arr,l,m);<br>
+                                &emsp;    mergeSort(arr,m+1,r);<br>
+                                &emsp;    merge(arr,l,m,r);<br>
+                                &emsp;}<br><br>
+
+                                &emsp;// UTILITY FUNCTIONS<br>
+                                &emsp;// Function to print an array<br>
+                                &emsp;void printArray(int A[], int size)<br>
+                                &emsp;&emsp;&emsp;{<br>
+                                &emsp;&emsp;&emsp;    for (int i = 0; i < size; i++)<br>
+                                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;        cout << A[i] << " ";<br>
+                                &emsp;}<br><br>
+
+                                &emsp;// Driver code<br>
+                                &emsp;int main()<br>
+                                &emsp;{<br>
+                                    &emsp;&emsp;&emsp;int arr[] = { 12, 11, 13, 5, 6, 7 };<br>
+                                    &emsp;&emsp;&emsp;int arr_size = sizeof(arr) / sizeof(arr[0]);<br><br>
+
+                                    &emsp;&emsp;&emsp;cout << "Given array is \n";<br>
+                                    &emsp;&emsp;&emsp;printArray(arr, arr_size);<br><br>
+
+                                    &emsp;&emsp;&emsp;mergeSort(arr, 0, arr_size - 1);<br><br>
+
+                                    &emsp;&emsp;&emsp;cout << "\nSorted array is \n";<br>
+                                    &emsp;&emsp;&emsp;printArray(arr, arr_size);<br>
+                                    &emsp;&emsp;&emsp;return 0;<br>
+                                &emsp;}  <br> </h4><br>
+                        
+                        &emsp;<h2 class = "headings">OUTPUT</h2><br>
+                        &emsp;<h4 class="codefont" style="margin-left: 150px" >
+                        &emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Given array is:<br>
+                        &emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;12 11 13 5 6 7<br><br>
+                        &emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Sorted array is<br> 
+                        &emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;5 6 7 11 12 13<br>
+                        </h4><br><br>
+                        
+                    </div>
+                </div>
+                
+<!--
+                <div id="comment-section">
+                    Comments Section
+                </div>
+-->
+            </section>
+            
+            <aside id="sidebar">
+                <h2><u>KEY</u>&nbsp;<u>NOTES</u></h2>
+                <p>
+                <h4>
+                    <br>
+                    <u>TIME COMPLEXITY</u> : T(n) = 2T(n/2) + θ(n) <br><br>
+                    <u>AUXILARY SPACE</u> : O(n)<br><br>
+                    <u>ALGORITHMIC PARADIGM</u> : Divide and Conquer <br><br>
+                    <u>SORTING IN PLACE</u> :  No in a typical implementation<br><br><br><br>
+                </h4>
+                <h3>
+                    <ul style="list-style-type: square">
+                        <li><a href="bubblesort.html" ; style="color: lightpink">BUBBLE SORT</a></li>
+                        <br>
+                        
+                        <li><a href="insertionsort.html"  ; style="color: lightpink">INSERTION SORT</a></li>
+                        <br>
+                        
+                        <li><a href="selectionsort.html"  ; style="color: lightpink">SELECTION SORT</a></li>
+                        <br>
+                        
+                        <li><a href="countingsort.html"  ; style="color: lightpink">COUNTING SORT</a></li>
+                        <br>
+                        
+                        <li><a href="mergesort.html" ; style="color: lightpink">MERGE SORT</a></li>
+                        <br>
+                        
+                        <li><a href="quicksort.html" ; style="color: lightpink">QUICK SORT</a></li>
+                        <br>
+                        
+<!--
+                        <li><a href="visualisation.html" ; style="color: lightpink">VISUALISATION</a></li>
+                        <br>
+                        
+-->
+                    </ul>
+                </h3>
+                </p>
+            </aside>
+        </div>
+        
+
+        
+
+<!--        ....................................-->     
+        <footer>
+            <div id="left-footer" >
+                <h3>Quick Links</h3>
+                <p>
+                    <ul>
+                        <li>
+                            <a href ="index.html">HOME</a>
+                        </li>
+                        
+                        <li>
+                            <a href ="sorting.html">SORTING</a>
+                        </li>
+                        <li>
+                            <a href ="searching.html">SEARCHING</a>
+                        </li>
+                        <li>
+                            <a href ="visualisation.html">VISUALISATION</a>
+                        </li>
+                        
+                        <li>
+                            <a href ="about.html">ABOUT</a>
+                        </li>
+                        <li>
+                            <a href ="index1.php">CONTACT US</a>
+                        </li>
+                        
+                    </ul>
+                </p>
+            </div>
+        <div id="right-footer">
+            <h3>Follow us on</h3>
+            <div id = "social-media-footer">
+                <ul>
+                    <li>
+                        <a href="https://www.facebook.com/mynotes.here.71">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/channel/UCS7Hy4greFUR1V2dzBbk2hQ">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/my.__.notes/">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        </footer>
+    
+    </main>
+    
+    <script src="main.js"></script>
+</body>
+</html> 

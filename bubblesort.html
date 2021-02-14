@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <!-- // <link rel="stylesheet" href="https://use.fontawesome.com"> -->
+    <script src="https://kit.fontawesome.com/c2e7ed5758.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" >
+    <title>SSP LEARN</title>
+</head>
+<body>
+    <div id="slideout-menu">
+        <ul>
+                <li>
+                    <a href="index.html">HOME</a>
+                </li>
+                <li>
+                    <a href="sorting.html">SORTING</a>
+                </li>
+                <li>
+                    <a href="searching.html">SEARCHING</a>
+                </li>
+                <li>
+                    <a href="visualisation.html">VISUALISATION</a>
+                </li>
+                <li>
+                    <a href="about.html">ABOUT</a>
+                </li>
+            </ul>
+    </div>
+    
+    <nav>
+        <div id="logo-img">
+            <a href="logopage.html">
+                <img src="img1/ssp2.jpg" alt="logo image">
+            </a>
+        </div>
+        <div id="menu-icon">
+            <i class="fas fa-bars"></i>
+        </div>
+            <ul>
+                <li>
+                    <a href="index.html" class="active">HOME</a>
+                </li>
+                <li>
+                    <a href="sorting.html">SORTING</a>
+                </li>
+                <li>
+                    <a href="searching.html">SEARCHING</a>
+                </li>
+                <li>
+                    <a href="visualisation.html">VISUALISATION</a>
+                </li>
+                <li>
+                    <a href="about.html">ABOUT</a>
+                </li>
+
+            </ul>
+    </nav>
+
+    
+    <main>
+        
+        <h2 class="page-heading" style="text-align: center" >BUBBLE SORT</h2>
+        <div id="post-container">
+            <section id="blogpost">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="img1/bubblesort.jpg" alt="blog image" >
+<!--                        style="width: 500px; height: 300px; margin-left: auto ; margin-right: auto ;display: block"-->
+                    </div>
+                    <div class="card-description"><br><br>
+                        <h2 class="headings">INTRODUCTION</h2><br>
+                            <b>Bubble Sort</b> is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in wrong order.<br><br>
+                            <b>Example</b>:<br><br>
+                            <b>First Pass</b>:<br>
+                            ( 5 1 4 2 8 ) –> ( 1 5 4 2 8 ), Here, algorithm compares the first two elements, and swaps since 5 > 1.<br>
+                            ( 1 5 4 2 8 ) –>  ( 1 4 5 2 8 ), Swap since 5 > 4<br>
+                            ( 1 4 5 2 8 ) –>  ( 1 4 2 5 8 ), Swap since 5 > 2<br>
+                            ( 1 4 2 5 8 ) –> ( 1 4 2 5 8 ), Now, since these elements are already in order (8 > 5), algorithm does not swap them.<br><br>
+
+                            <b>Second Pass</b>:<br>
+                            ( 1 4 2 5 8 ) –> ( 1 4 2 5 8 )<br>
+                            ( 1 4 2 5 8 ) –> ( 1 2 4 5 8 ), Swap since 4 > 2<br>
+                            ( 1 2 4 5 8 ) –> ( 1 2 4 5 8 )<br>
+                            ( 1 2 4 5 8 ) –>  ( 1 2 4 5 8 )<br><br>
+                            Now, the array is already sorted, but our algorithm does not know if it is completed. The algorithm needs one whole pass without any swap to know it is sorted.<br><br>
+
+                            <b>Third Pass</b>:<br>
+                            ( 1 2 4 5 8 ) –> ( 1 2 4 5 8 )<br>
+                            ( 1 2 4 5 8 ) –> ( 1 2 4 5 8 )<br>
+                            ( 1 2 4 5 8 ) –> ( 1 2 4 5 8 )<br>
+                            ( 1 2 4 5 8 ) –> ( 1 2 4 5 8 )<br><br><br>
+                        
+                            <h2 class="headings">CODE</h2><br>
+                            <h4 class="codefont" , style="margin-left: 150px;">
+                            // C++ program for implementation of Bubble sorting<br>
+                                #include bits/stdc++.h <br>
+                                using namespace std; <br>
+
+                                &emsp;&emsp;void swap(int *xp, int *yp)<br>  
+                                &emsp;&emsp;{  <br>
+                                    &emsp;&emsp;&emsp;&emsp;int temp = *xp;<br>  
+                                    &emsp;&emsp;&emsp;&emsp;*xp = *yp;  <br>
+                                    &emsp;&emsp;&emsp;&emsp;*yp = temp;  <br>
+                                &emsp;&emsp;}  <br>
+
+                                &emsp;&emsp;// A function to implement bubble sort  <br>
+                                &emsp;&emsp;void bubbleSort(int arr[], int n)  <br>
+                                &emsp;&emsp;{  <br>
+                                    &emsp;&emsp;&emsp;&emsp;int i, j;<br>  
+                                    &emsp;&emsp;&emsp;&emsp;for (i = 0; i < n-1; i++) <br>     
+
+                                    &emsp;&emsp;&emsp;&emsp; //Last i elements are already in place<br>  
+                                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;for (j = 0; j < n-i-1; j++)  <br>
+                                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;if (arr[j] > arr[j+1])  <br>
+                                            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;swap(&arr[j], &arr[j+1]);<br>  
+                                &emsp;&emsp;&emsp;&emsp;}  <br>
+
+                               &emsp;&emsp; /* Function to print an array */<br>
+                                &emsp;&emsp;void printArray(int arr[], int size) <br> 
+                                &emsp;&emsp;{  <br>
+                                 &emsp;&emsp;&emsp;&emsp;   int i;<br>  
+                                    &emsp;&emsp;&emsp;&emsp;for (i = 0; i < size; i++) <br>  
+                                        &emsp;&emsp;&emsp;&emsp;cout << arr[i] << " ";  <br>
+                                    &emsp;&emsp;&emsp;&emsp;cout << endl;  <br>
+                                &emsp;&emsp;}  <br>
+
+                                &emsp;&emsp;// Driver code <br> 
+                                &emsp;&emsp;int main()  <br>
+                               &emsp;&emsp;{  <br>
+                                    &emsp;&emsp;&emsp;&emsp;int arr[] = {64, 34, 25, 12, 22, 11, 90};  <br>
+                                    &emsp;&emsp;&emsp;&emsp;int n = sizeof(arr)/sizeof(arr[0]);  <br>
+                                    &emsp;&emsp;&emsp;&emsp;bubbleSort(arr, n);  <br>
+                                    &emsp;&emsp;&emsp;&emsp;cout<<"Sorted array: \n";<br>  
+                                    &emsp;&emsp;&emsp;&emsp;printArray(arr, n);  <br>
+                                    &emsp;&emsp;&emsp;&emsp;return 0;  <br><br>
+                            &emsp;&emsp;    }  <br> </h4>
+                        
+                        <h2 class = "headings">OUTPUT</h2><br>
+                        <h4 class="codefont" style="margin-left: 150px" >
+                       &emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Sorted array:<br>
+                      &emsp;&emsp;  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;11 12 22 25 34 64 90</h4><br><br>
+                        
+                        <h2 class="headings">ILUSTRATION</h2><br>
+                        <img src="img/ilus1.png" style="margin-left: 200px ; margin-bottom: 50px;">
+                        
+                    </div>
+                </div>
+                
+<!--
+                <div id="comment-section">
+                    Comments Section
+                </div>
+-->
+            </section>
+            
+            <aside id="sidebar">
+                <h2><u>KEY</u>&nbsp;<u>NOTES</u></h2>
+                <p>
+                <h4>
+                    <br>
+                    <u>Worst and Average Case Time Complexity</u> : O(n*n). <br><br>
+                    <u>Best Case Time Complexity</u> : O(n). Best case occurs when array is already sorted.<br><br>
+                    <u>Auxiliary Space</u> : O(1)<br><br>
+                    <u>Boundary Cases</u> : Bubble sort takes minimum time (Order of n) when elements are already sorted.<br><br><br><br>
+                </h4>
+                <h3>
+                    <ul style="list-style-type: square">
+                        <li><a href="bubblesort.html" ; style="color: lightpink">BUBBLE SORT</a></li>
+                        <br>
+                        
+                        <li><a href="insertionsort.html"  ; style="color: lightpink">INSERTION SORT</a></li>
+                        <br>
+                        
+                        <li><a href="selectionsort.html"  ; style="color: lightpink">SELECTION SORT</a></li>
+                        <br>
+                        
+                        <li><a href="countingsort.html"  ; style="color: lightpink">COUNTING SORT</a></li>
+                        <br>
+                        
+                        <li><a href="mergesort.html" ; style="color: lightpink">MERGE SORT</a></li>
+                        <br>
+                        
+                        <li><a href="quicksort.html" ; style="color: lightpink">QUICK SORT</a></li>
+                        <br>
+                        
+<!--
+                        <li><a href="visualisation.html" ; style="color: lightpink">VISUALISATION</a></li>
+                        <br>
+                        
+-->
+                    </ul>
+                </h3>
+                </p>
+            </aside>
+        </div>
+        
+
+        
+
+<!--        ....................................-->     
+        <footer>
+            <div id="left-footer" >
+                <h3>Quick Links</h3>
+                <p>
+                    <ul>
+                        <li>
+                            <a href ="index.html">HOME</a>
+                        </li>
+                        
+                        <li>
+                            <a href ="sorting.html">SORTING</a>
+                        </li>
+                        <li>
+                            <a href ="searching.html">SEARCHING</a>
+                        </li>
+                        <li>
+                            <a href ="visualisation.html">VISUALISATION</a>
+                        </li>
+                        
+                        <li>
+                            <a href ="about.html">ABOUT</a>
+                        </li>
+                        <li>
+                            <a href ="index1.php">CONTACT US</a>
+                        </li>
+                        
+                    </ul>
+                </p>
+            </div>
+        <div id="right-footer">
+            <h3>Follow us on</h3>
+            <div id = "social-media-footer">
+                <ul>
+                    <li>
+                        <a href="https://www.facebook.com/mynotes.here.71">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/channel/UCS7Hy4greFUR1V2dzBbk2hQ">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/my.__.notes/">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        </footer>
+    
+    </main>
+    
+    <script src="main.js"></script>
+</body>
+</html> 
